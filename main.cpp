@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <cstring>
 #include <cstdlib>
 #define NUMBER_OF_ANIMALS 100
 
@@ -9,20 +10,22 @@ using namespace std;
 class Animal{
 private:
         int age;
-        string name;
-        string kind;
+        char* name;
+        char* kind;
         int pawsNum;
         int health;
 public:
     Animal(){
         age = 0;
-        name = "<noname>";
-        kind = "<no kind>";
+        name = new char[NUMBER_OF_ANIMALS];
+        kind = new char[NUMBER_OF_ANIMALS];
+        strcpy(name, "No name");
+        strcpy(kind, "No kind");
         pawsNum = 0;
         health = rand() % 100;
     }
 
-    Animal(int age, int pawsNum, string name, string kind, int health){
+    Animal(int age, int pawsNum, char* name, char* kind, int health){
         this->age = age;
         this->pawsNum = pawsNum;
         this->name = name;
@@ -45,6 +48,8 @@ public:
         cout<<"kind  "<<kind<<endl;
         cout<<"pawsNum  "<<pawsNum<<endl;
         cout<<"health  "<<health<<endl<<endl;
+    }
+    ~Animal(){
     }
 };
 
